@@ -1,98 +1,106 @@
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VLTV - IPTV</title>
-  <link href="style.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VLTV - Planos IPTV</title>
   <style>
     body {
-      background-color: #004aad;
+      background-color: #0057ff;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20px;
+      margin: 0;
+      padding: 2rem;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
+    img.logo {
+      width: 120px;
+      margin-bottom: 1rem;
     }
-    .plano {
-      background: #003a8c;
-      padding: 15px;
-      margin: 10px;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .pix-box {
+      background: white;
+      color: #0057ff;
+      padding: 1rem;
       border-radius: 10px;
-    }
-    .botao {
-      display: inline-block;
-      background-color: #00ffae;
-      color: #000;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 15px;
+      margin: 2rem auto;
+      width: fit-content;
       font-weight: bold;
     }
-    .pix-area {
-      background-color: #003a8c;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-    .pix-chave {
+    .planos button {
       background: white;
-      color: #000;
-      padding: 10px;
-      border-radius: 5px;
-      word-break: break-all;
-    }
-    .copiar-btn {
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #00ffae;
+      color: #0057ff;
+      padding: 1rem 2rem;
+      margin: 1rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
+      font-size: 1rem;
       cursor: pointer;
       font-weight: bold;
     }
-    img.logo {
-      max-width: 200px;
-      margin-bottom: 20px;
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .popup-content {
+      position: relative;
+      margin: 5% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      background: white;
+      border-radius: 10px;
+    }
+    .popup-content img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      color: black;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="logo.jpg" alt="VLTV Logo" class="logo">
-    <h1>VLTV - Sua IPTV Completa</h1>
-    <p>Mais de <strong>80 mil conteúdos</strong> com todos os canais liberados.<br>
-       Filmes, séries, esportes, canais adultos e muito mais.<br>
-       Teste grátis disponível, é só chamar no WhatsApp!</p>
+  <img src="logo.png" class="logo" alt="VLTV Logo" />
+  <h1>Escolha seu Plano IPTV</h1>
 
-    <div class="planos">
-      <div class="plano"><h2>Plano 1 Mês</h2><p>R$ 29,90</p></div>
-      <div class="plano"><h2>Plano 3 Meses</h2><p>R$ 79,90</p></div>
-      <div class="plano"><h2>Plano 7 Meses</h2><p>R$ 139,90</p></div>
+  <div class="pix-box">
+    Chave Pix (Copia e Cola):<br>
+    <code>2557824c-da62-402c-a3fe-e0a5e6cd2300</code>
+  </div>
+
+  <div class="planos">
+    <button onclick="openPopup()">Plano 1 Mês - R$ 29,90</button>
+    <button onclick="openPopup()">Plano 3 Meses - R$ 79,90</button>
+    <button onclick="openPopup()">Plano 7 Meses - R$ 139,90</button>
+    <button onclick="openPopup()">Plano Anual - R$ 259,90</button>
+  </div>
+
+  <div class="popup" id="flyerPopup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">✖</span>
+      <img src="flay.jpg" alt="Flyer VLTV" />
     </div>
-
-    <p class="pagamento">Pagamento via <strong>Pix</strong></p>
-
-    <div class="pix-area">
-      <p>Chave aleatória Pix (copia e cola):</p>
-      <div class="pix-chave" id="pixChave">2557824c-da62-402c-a3fe-e0a5e6cd2300</div>
-      <button class="copiar-btn" onclick="copiarPix()">Copiar Chave Pix</button>
-    </div>
-
-    <p>Ficou com dúvida ou quer testar? Fale conosco!</p>
-    <a href="https://wa.me/seunumeroaqui" target="_blank" class="botao">Falar no WhatsApp</a>
   </div>
 
   <script>
-    function copiarPix() {
-      const chave = document.getElementById("pixChave").innerText;
-      navigator.clipboard.writeText(chave);
-      alert("Chave Pix copiada com sucesso!");
+    function openPopup() {
+      document.getElementById('flyerPopup').style.display = 'block';
+    }
+    function closePopup() {
+      document.getElementById('flyerPopup').style.display = 'none';
     }
   </script>
 </body>
